@@ -1,0 +1,19 @@
+quotes:
+  image: clek3/quotes
+  command: go run ./src/main.go
+  working_dir: /go/src/github.com/clek3/quotes
+  volumes:
+    - ./src:/go/src/github.com/clek3/quotes/src
+  links:
+    - cassandra
+  ports:
+    - "8080:8080"
+
+cassandra:
+  image: cassandra
+  ports:
+    - "7199:7199"
+    - "9042:9042"
+    - "9160:9160"
+    - "61621:61621"
+    - "2222:22"
